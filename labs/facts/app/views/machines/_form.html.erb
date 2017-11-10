@@ -1,0 +1,52 @@
+<%= form_with(model: machine, local: true) do |form| %>
+  <% if machine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
+
+      <ul>
+      <% machine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :machine_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :region_id %>
+    <%= form.collection_select :region_id, @regions, :id, :name, {}, id: :region_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :datacenter_id %>
+    <%= form.collection_select :datacenter_id, @datacenters, :id, :name, {}, id: :machine_datacenter_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= javascript_tag do %>
+function updateDatacentersByRegion(regionId) {
+  var allDatacenters = <%= @datacenters_by_region.to_json.html_safe %>;
+  var datacenters = allDatacenters[regionId];
+
+  var dcSelect = $('#machine_datacenter_id');
+  dcSelect.empty();
+
+  $.each(datacenters, function() {
+    dcSelect.append($('<option></option>').attr('value', this.id).text(this.name));
+  });
+  dcSelect.trigger('change');
+}
+
+updateDatacentersByRegion($("#region_id").val());
+$("#region_id").change(function() {
+  updateDatacentersByRegion($(this).val());
+});
+<% end %>

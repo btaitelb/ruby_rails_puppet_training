@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @fact.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @fact.value %>
+</p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @fact.machine.try(:name) %>
+</p>
+
+<%= link_to 'Edit', edit_fact_path(@fact) %> |
+<%= link_to 'Back', facts_path %>

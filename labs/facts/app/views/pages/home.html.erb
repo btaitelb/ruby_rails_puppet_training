@@ -1,0 +1,6 @@
+<h1>Recent Facts</h1>
+<ul>
+<%- @facts.each do |fact| %>
+  <li>(<em><%= fact.machine.try(:name) %></em>) <strong><%= fact.name %>: </strong><%= fact.value %></li>
+<% end %>
+</ul>
