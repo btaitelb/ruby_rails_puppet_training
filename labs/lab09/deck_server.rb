@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 require 'sinatra'
 require './deck'
 
@@ -23,5 +22,3 @@ class DeckServer < Sinatra::Base
     "Shuffled!"
   end
 end
-
-DeckServer.run!

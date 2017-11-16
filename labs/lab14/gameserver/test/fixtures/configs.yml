@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server_url: MyString
+  server_port: 1
+  game_type: 1
+
+two:
+  server_url: MyString
+  server_port: 1
+  game_type: 1

@@ -1,0 +1,2 @@
+notice("ips: ${ $facts['ips'] }")
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  config: one
+  title: MyString
+  player1: one
+  player2: one
+
+two:
+  config: two
+  title: MyString
+  player1: two
+  player2: two
